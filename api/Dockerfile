@@ -1,6 +1,6 @@
 FROM node:8.9.1
 
-EXPOSE 3075
+EXPOSE 3074
 
 ENV HOME=/home/node
 

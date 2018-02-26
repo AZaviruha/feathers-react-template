@@ -2,17 +2,15 @@
   "name": "feathers-api-example",
   "description": "API for ... app",
   "version": "0.0.0",
-  "homepage": "",
   "main": "src",
-  "keywords": [
-    "feathers"
-  ],
   "author": {
     "name": "Alexei Zaviruha",
     "email": "a.zaviruha@gmail.com"
   },
-  "contributors": [],
-  "bugs": {},
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/AZaviruha/feathers-react-template.git"
+  },
   "directories": {
     "lib": "src",
     "test": "test/"

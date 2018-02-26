@@ -1,0 +1,14 @@
+{
+  "port": 3076,
+
+  "postgres": {
+    "client": "pg",
+    "connection": {
+      "database": "test",
+      "host": "test_db_1",
+      "port": "5432",
+      "user": "test",
+      "password": "test"
+    }
+  }
+}

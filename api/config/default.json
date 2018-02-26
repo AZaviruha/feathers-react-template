@@ -1,9 +1,52 @@
 {
   "host": "localhost",
-  "port": 3030,
+  "port": 3075,
   "public": "../public/",
   "paginate": {
     "default": 10,
     "max": 50
-  }
+  },
+  "authentication": {
+    "secret": "c28dd24d68c76253k9724024b69533a9bbfa64dfcca595db9d92e572fecb2cd1d7bdde366fe8cdb6688059fdd741c1ffc28ffc8e5269ab85d2c4279e7e162ca82787765db14832ccbd3dct815729687ef040fe2e6dc1418c2c282093705779ce1c0778cef5340fb17f9e0e965d67356e3041f180312ee580f39e99c2a1b6f3f9033bb58b0267d175d2947f1b10c859754104304210157894a12637773e2ed7e79cb23009f154059fe087a32e1d40a87eb3cfc91e3903e10aa8378d98c458977d89ca40dcb3c71358e2793a3a3b157175a90b785aff8031246cea420ee7a9d666fc73e5a4931eca342fd02b0cb96e6a1b97296173f920b3a717dc48e96e00c78e",
+    "strategies": [
+      "jwt",
+      "local"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "email",
+      "passwordField": "password"
+    }
+  },
+
+  "accessLevels": {
+      "public": "*",
+      "anon": [ "anon" ],
+      "user" : [ "user", "admin" ],
+      "paid": [ "paid", "admin" ],
+      "admin": [ "admin" ]
+  },
+
+  "postgres": {},
+
+  "mail": {
+    "auth": {
+      "api_key": "key-e6466e1cac6ceba4604326631e2eb912",
+      "domain": "sandbox1e9515789ab641b6b3f79b4dce61c8aa.mailgun.org"
+    },
+    "from": "test@example.com"
+  },
+  "logs": {}
 }

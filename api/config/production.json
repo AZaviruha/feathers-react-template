@@ -1,4 +1,4 @@
 {
-  "host": "feathers-api-example-app.feathersjs.com",
+  "host": "test-api-app.feathersjs.com",
   "port": "PORT"
 }
