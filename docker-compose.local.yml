@@ -1,0 +1,60 @@
+version: '3'
+
+services:
+
+  # api:
+  #   build: ./api
+  #   command: bin/wait-for-it.sh db:5432 -- npm run start
+  #   restart: always
+  #   environment:
+  #     - NODE_ENV=dev
+  #   volumes:
+  #     - ./api/:/home/node/api/
+  #     - /home/node/api/node_modules
+  #   ports:
+  #     - "3075:3075"
+  #   links:
+  #     - db
+  #   networks:
+  #     - frontend
+  #     - backend
+  #   depends_on:
+  #     - db
+
+  db:
+    image: postgres:9.6
+    environment:
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test
+    ports:
+      - "5432:5432"
+    networks:
+      - backend
+
+  migrations:
+    image: rdccosmo/flywaydb
+    volumes:
+        - ./db/migrations:/var/migrations
+    links:
+        - db
+    environment:
+        - DATABASE_NAME=test
+        - DATABASE_USER=test
+        - DATABASE_PASSWORD=test
+        - DATABASE_PORT=5432
+        - DATABASE_ENCODING=utf8
+        - DATABASE_DRIVER=postgresql
+        - MIGRATIONS_PATH=/var/migrations
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 5s
+      timeout: 30s
+      retries: 5
+
+# network_mode: bridge
+
+networks:
+  frontend:
+  backend:
